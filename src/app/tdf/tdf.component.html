@@ -1,0 +1,55 @@
+<p>This is a template driven form</p>
+<div class="p-4 shadow-lg h-full lg:w-[700px]">
+    <form #userForm="ngForm">
+        <div
+            *ngIf="userForm.value.fullName" class="my-8">
+            <p class="text-red-500 my-4">
+                <span class="font-extrabold">{{userForm.value.fullName}}</span>, Did you know formGroup and formControl are the building Blocks
+                of reactive forms, but template forms uses them under the hood. Below is a formGroup, each field is a formControl
+            </p>
+            {{userForm.value | json}}
+        </div>
+        <div class="flex flex-col gap-2 mt-2">
+            <label>
+                Full Name
+            </label>
+            <input
+                [ngModel]="formModel.fullName"
+                class="p-2 border-2 rounded-md"
+                type="text" name="fullName" />
+            <small *ngIf="!userForm.value.fullName">Enter your full name to get a message</small>
+        </div>
+
+        <div class="flex flex-col gap-2 mt-2">
+            <label>
+                Country Of Origin
+            </label>
+            <input
+                [ngModel]="formModel.origin"
+                class="p-2 border-2 rounded-md"
+            type="text" name="country" />
+        </div>
+
+        <div class="flex flex-col gap-2 mt-2">
+            <label>
+                Occupation
+            </label>
+            <input
+                [ngModel]="formModel.occupation"
+                class="p-2 border-2 rounded-md"
+            type="text" name="occupation" />
+        </div>
+
+        <div class="mt-4 flex gap-2">
+            <input [ngModel]="formModel.subscribe" type="checkbox" name="subscribe" />
+            <label>
+                Sign Up for our bi-weekly newsletter
+            </label>
+        </div>
+        <div class="flex justify-end">
+            <button class="bg-indigo-500 w-24 p-2 rounded-md text-white font-bold mt-8 ">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>

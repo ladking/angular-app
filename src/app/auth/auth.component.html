@@ -1,0 +1,18 @@
+<div class="p-12">
+   <p class="text-red-500 text-2xl font-bold text-center"> Angular Authentication Application</p>
+   <p class="text-center mt-4">Choose between either option</p>
+   <div class="flex justify-center mt-8 gap-4">
+        <button 
+            *ngFor="let item of choices"
+            (click)="handleView(item)"
+            [class.bg-indigo-300]="item === view"
+            [ngClass]="{'bg-indigo-500': item === view, 'bg-gray-300':item !== view}"
+            class="p-2 bg-gray-300 w-28 rounded-md">
+            {{item}}
+        </button>
+   </div>
+   <div [ngSwitch]="view" class="flex justify-center mt-8">
+    <app-rdf *ngSwitchCase="'Reactive'"></app-rdf>
+    <app-tdf *ngSwitchCase="'Template'"></app-tdf>
+</div>
+</div>
