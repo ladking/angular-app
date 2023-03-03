@@ -1,0 +1,17 @@
+<div class="lg:p-16 p-8 overflow-auto h-screen">
+    <h1 class="text-center font-bold text-3xl">
+        Gallery Page, Data was gotten from 
+    </h1>
+    <p class="text-center mt-4 text-blue-500 cursor-pointer font-bold">
+        <a class="mt-4" href="https://jsonplaceholder.typicode.com/photos">JSONPLACEHOLDER API</a>
+    </p>
+
+    <div class="flex flex-wrap gap-8 mt-4">
+        <div
+            class="sm:w-[30%] w-full rounded-md shadow-lg"
+            *ngFor="let items of _response">
+            <img class="w-full rounded-md" src={{items.thumbnailUrl}} alt="thumbnail" />
+            <p class="font-bold text-lg mt-4 p-2">{{items.title}}</p>
+        </div>
+    </div>
+</div>
