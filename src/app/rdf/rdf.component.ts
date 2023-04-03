@@ -17,7 +17,7 @@ export class RdfComponent {
   public forms = this.fb.group({
     firstName: ['', Validators.required],
     lastName:[''],
-    email:['', Validators.required],
+    email:[''],
     subscribe:[false]
   })
 
