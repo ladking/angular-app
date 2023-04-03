@@ -1,13 +1,21 @@
 <p>This is a reactive driven form</p>
 <div class="p-4 shadow-lg h-full lg:w-[700px]">
-    <form>
+    <div *ngIf="showMessage">
+        <p>Hello <span class="text-blue-600">{{forms.value.firstName}}</span>,
+             <span *ngIf="forms.value.subscribe">You have decided to sign up for our newsletter with the email</span>
+             {{forms.value.email}}
+        </p>
+    </div>
+    <form [formGroup]="forms">
         <div class="flex flex-col gap-2 mt-2">
             <label>
                 First Name
             </label>
             <input
                 class="p-2 border-2 rounded-md"
-            type="text" name="firstName" />
+                type="text" name="firstName" 
+                formControlName="firstName"/>
+                {{forms.value.firstName | json}}
         </div>
 
         <div class="flex flex-col gap-2 mt-2">
@@ -16,7 +24,8 @@
             </label>
             <input
                 class="p-2 border-2 rounded-md"
-            type="text" name="lastName" />
+                type="text" name="lastName"
+                formControlName="lastName" />
         </div>
 
         <div class="flex flex-col gap-2 mt-2">
@@ -25,17 +34,21 @@
             </label>
             <input
                 class="p-2 border-2 rounded-md"
-            type="text" name="email" />
+                type="text" name="email" 
+                formControlName="email"/>
         </div>
 
         <div class="mt-4 flex gap-2">
-            <input type="checkbox" name="subscribe" />
+            <input type="checkbox" name="subscribe" formControlName="subscribe"/>
             <label>
                 Sign Up for our bi-weekly newsletter
             </label>
         </div>
         <div class="flex justify-end">
-            <button class="bg-indigo-500 w-24 p-2 rounded-md text-white font-bold mt-8 ">
+            {{forms.status}}
+            <button
+            (click)="handleClick()"
+             class="bg-indigo-500 w-24 p-2 rounded-md text-white font-bold mt-8 ">
                 Submit
             </button>
         </div>
